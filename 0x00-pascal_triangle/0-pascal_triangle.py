@@ -2,7 +2,14 @@
 
 """Pascal's Triangle"""
 
-from math import factorial as f
+
+def f(n):
+    """
+    my own factorial function
+    """
+    if n == 0:
+        return 1
+    return n * f(n - 1)
 
 
 def short_triangle(ui):
