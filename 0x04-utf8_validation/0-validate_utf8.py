@@ -27,6 +27,8 @@ def validUTF8(data):
                 count = 2
             elif ((byte >> 3) == 0b11110):
                 count = 3
+            elif ((byte >> 7) != 0):
+                return False
             else:
                 return False
         else:
