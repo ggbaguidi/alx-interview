@@ -15,9 +15,21 @@ the water surrounding the island)."""
 
 
 def island_perimeter(grid):
-    """Island Perimeter function
-    """
-    row_sum = [sum(row) for row in grid]
-    column_sum = [sum(column) for column in zip(*grid)]
+    """Island Perimeter function"""
+    perimeter = 0
 
-    return (max(row_sum) + max(column_sum)) * 2
+    for i, _ in enumerate(grid):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 1:  # If the cell is land
+                perimeter += 4
+
+                if i > 0 and grid[i - 1][j] == 1:
+                    perimeter -= 1
+                if i < len(grid) - 1 and grid[i + 1][j] == 1:
+                    perimeter -= 1
+                if j > 0 and grid[i][j - 1] == 1:
+                    perimeter -= 1
+                if j < len(grid[0]) - 1 and grid[i][j + 1] == 1:
+                    perimeter -= 1
+
+    return perimeter
